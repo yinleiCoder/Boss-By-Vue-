@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOSS列表页面</title>
+    <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.png">
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="list-header flex">
+            <form action="" class="flex">
+                <img src="./imgs/icon-home.png" alt="">
+                <div class="inner flex">
+                    <input type="text" value="Android">
+                    <span>&times;</span>
+                </div>
+
+                <button>搜索</button>
+            </form>
+        </div>
+
+        <div class="filter flex">
+            <dl class="active1" v-for="item in filters">
+                <dt>{{item.name}}</dt>
+                <dd>
+                    <ul>
+                        <li class="active" v-for="option in item.options">{{option.text}}</li>
+                    </ul>
+                </dd>
+            </dl>
+
+            
+        </div>
+
+        <ul class="job-list">
+            <li v-for="item in jobs">
+                <a href="" class="flex job-item">
+                    <img :src="item.logo" alt="">
+                    <div class="text">
+                        <div class="title flex">
+                                {{item.title}}
+                            <span class="salary">
+                                {{item.salary}}
+                            </span>
+                        </div>
+                        <div class="company">
+                            {{item.company}}
+                        </div>
+                        <div class="props">
+                            <span v-for="tag in item.tags">{{tag}}</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+           
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data:{
+                filters:[],
+                jobs:[]
+            },
+            created(){
+                fetch('http://127.0.0.1:5500/api/list.json')
+                .then(res=>{
+                    return res.json()
+                }).then(data=>{
+                    // vm.filters = data
+                    this.filters = data
+                })
+
+                fetch('http://127.0.0.1:5500/api/jobs.json')
+                .then(res=>{
+                    return res.json()
+                }).then(data=>{
+                    // vm.filters = data
+                    this.jobs = data
+                })
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[
+    {
+        "icon": "./imgs/technology.png",
+        "name": "技术",
+        "tags": ["Java","Kotlin","Flutter","Go"]
+    },
+    {
+        "icon": "./imgs/technology.png",
+        "name": "技术",
+        "tags": ["Java","Kotlin","Flutter","Go"]
+    },
+    {
+        "icon": "./imgs/technology.png",
+        "name": "技术",
+        "tags": ["Java","Kotlin","Flutter","Go"]
+    },
+    {
+        "icon": "./imgs/technology.png",
+        "name": "技术",
+        "tags": ["Java","Kotlin","Flutter","Go"]
+    },
+    {
+        "icon": "./imgs/technology.png",
+        "name": "技术",
+        "tags": ["Java","Kotlin","Flutter","Go"]
+    },
+    {
+        "icon": "./imgs/technology.png",
+        "name": "技术",
+        "tags": ["Java","Kotlin","Flutter","Go"]
+    }
+]

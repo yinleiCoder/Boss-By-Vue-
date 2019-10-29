@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOSS直聘(Vue制作首页)</title>
+    <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.png">
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="home-header">
+            <img src="./imgs/home-search-text.png" alt="">
+            <form action="">
+                <input type="text" placeholder="搜索职位/公司">
+                <button>搜索</button>
+            </form>
+        </div>
+
+        <div class="home-categories">
+            <dl v-for="item in categories">
+                <dt>
+                    <img :src="item.icon" alt="">
+                    <div>{{item.name}}</div>
+                </dt>
+                <dd>
+                    <a href="" class="tag" v-for="tag in item.tags">Java</a>
+                </dd>
+            </dl>
+
+        </div>
+
+        <div class="home-footer">
+            <p>违法和不良信息举报邮箱：jubao@kanzhun.com</p>
+            <p>企业服务热线和举报投诉：400 065 5799</p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+       const vm =  new Vue({
+            el: '#app',
+            data: {
+                categories:[]
+            },
+            created(){
+                const that = this
+                fetch('http://127.0.0.1:5500/api/index.json')
+                .then(res=>{
+                    return res.json()
+                }).then(data=>{
+                    // console.log(data)
+                    this.categories = data
+                })
+            }
+        })
+
+
+    </script>
+</body>
+</html>
